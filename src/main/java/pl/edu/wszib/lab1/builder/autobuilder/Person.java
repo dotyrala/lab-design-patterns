@@ -1,4 +1,4 @@
-package pl.edu.wszib.lab1.builder;
+package pl.edu.wszib.lab1.builder.autobuilder;
 
 import com.google.auto.value.AutoValue;
 
