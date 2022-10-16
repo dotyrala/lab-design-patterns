@@ -32,5 +32,11 @@ public abstract class Person {
         public abstract Builder address(Address address);
 
         public abstract Person build();
+
+        public Person createPerson(Gender gender){
+            if(gender == Gender.MALE){
+
+            }
+        }
     }
 }
