@@ -23,6 +23,10 @@ public class Person {
         return new Builder();
     }
 
+    public static Address builderAddress(){
+        return new Address();
+    }
+
     public static class Builder {
         private String firstName;
         private String lastName;
