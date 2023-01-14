@@ -1,32 +1,59 @@
 package pl.edu.wszib.lab1.builder;
 
-import com.google.auto.value.AutoValue;
+public class Address {
+    private final String city;
+    private final String street;
+    private final String number;
+    private final String postalCode;
 
-@AutoValue
-public abstract class Address {
-    abstract String city();
-
-    abstract String street();
-
-    abstract String number();
-
-    abstract String postalCode();
-
-    public static Builder builder() {
-        return new AutoValue_Address.Builder();
+    private Address(final String city,
+                    final String street,
+                    final String number,
+                    final String postalCode) {
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.postalCode = postalCode;
     }
 
-    @AutoValue.Builder
-    public abstract static class Builder {
+    public static Builder builder() {
+        return new Builder();
+    }
 
-        abstract Builder city(String city);
+    public static final class Builder {
+        private String city;
+        private String street;
+        private String number;
+        private String postalCode;
 
-        abstract Builder street(String street);
+        public Address build() {
+            return new Address(
+                    city,
+                    street,
+                    number,
+                    postalCode
+            );
+        }
 
-        abstract Builder number(String number);
+        public Builder city(String city) {
+            this.city = city;
+            return this;
+        }
 
-        abstract Builder postalCode(String postalCode);
+        public Builder street(String street) {
+            this.street = street;
+            return this;
+        }
 
-        abstract Address build();
+        public Builder number(String number) {
+            this.number = number;
+            return this;
+        }
+
+        public Builder postalCode(String postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
+
     }
 }

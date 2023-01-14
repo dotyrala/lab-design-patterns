@@ -1,42 +1,70 @@
 package pl.edu.wszib.lab1.builder;
 
-import com.google.auto.value.AutoValue;
+public class Person {
+    private final String firstName;
+    private final String lastName;
+    private final Integer age;
+    private final Gender gender;
+    private final Address address;
 
-@AutoValue
-public abstract class Person {
-    abstract String firstName();
-
-    abstract String lastName();
-
-    abstract Integer age();
-
-    abstract Gender gender();
-
-    abstract Address address();
-
-    static Builder builder() {
-        return new AutoValue_Person.Builder();
+    private Person(final String firstName,
+                   final String lastName,
+                   final Integer age,
+                   final Gender gender,
+                   final Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
     }
 
-    @AutoValue.Builder
-    abstract static class Builder {
+    public static Person.Builder builder() {
+        return new Person.Builder();
+    }
 
-        public abstract Builder firstName(String firstName);
+    public static class Builder {
+        private String firstName;
+        private String lastName;
+        private Integer age;
+        private Gender gender;
+        private Address address;
 
-        public abstract Builder lastName(String lastName);
+        public Person build() {
+            return new Person(
+                    firstName,
+                    lastName,
+                    age,
+                    gender,
+                    address
+            );
+        }
 
-        public abstract Builder age(Integer age);
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
 
-        public abstract Builder gender(Gender gender);
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
 
-        public abstract Builder address(Address address);
+        public Builder age(Integer age) {
+            this.age = age;
+            return this;
+        }
+        public Builder gender(Gender gender) {
+            this.gender = gender;
+            return this;
+        }
+        public Builder address(Address address) {
+            this.address = address;
+            return this;
+        }
 
-        public abstract Person build();
-
-        public Person createPerson(Gender gender){
-            if(gender == Gender.MALE){
-
-            }
+        public Address.Builder addressBuilder() {
+            return Address.builder();
         }
     }
 }
